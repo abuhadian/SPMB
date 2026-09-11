@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistem Penerimaan Murid Baru (SPMB) SMP Negeri 1 Segah, Berau, Kalimantan Timur Tahun Pelajaran 2026/2027. Pendaftaran online cepat, transparan, dan terintegrasi.">
+  <title>SPMB SMP Negeri 1 Segah - Sistem Penerimaan Murid Baru 2026</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Topbar Kontak & Informasi -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span><i class="fas fa-map-marker-alt text-warning"></i> Segah, Kab. Berau, Kalimantan Timur</span>
+        <span><i class="fas fa-phone-alt text-warning"></i> <span data-school-phone>0812-5555-6789</span></span>
+        <span><i class="fas fa-envelope text-warning"></i> <span data-school-email>smpn1segah.berau@gmail.com</span></span>
+      </div>
+      <div class="topbar-info">
+        <span><i class="fas fa-clock"></i> Layanan SPMB: 08.00 - 14.00 WITA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigasi -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="Logo SMP Negeri 1 Segah" class="brand-logo">
+        <div class="brand-text">
+          <h1 data-school-name>SMP NEGERI 1 SEGAH</h1>
+          <span>SPMB - SISTEM PENERIMAAN MURID BARU</span>
+        </div>
+      </a>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button class="nav-toggle" aria-label="Menu Navigasi">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Menu Items -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="#informasi" class="nav-link"><i class="fas fa-info-circle"></i> Informasi SPMB</a></li>
+          <li><a href="#persyaratan" class="nav-link"><i class="fas fa-list-check"></i> Persyaratan</a></li>
+          <li><a href="#jadwal" class="nav-link"><i class="fas fa-calendar-alt"></i> Jadwal</a></li>
+          <li><a href="#alur" class="nav-link"><i class="fas fa-route"></i> Alur Pendaftaran</a></li>
+          <li><a href="pengumuman.html" class="nav-link"><i class="fas fa-bullhorn"></i> Pengumuman</a></li>
+          <li><a href="cek-status.html" class="nav-link"><i class="fas fa-search"></i> Cek Status</a></li>
+          <li class="nav-btn"><a href="login.html" class="btn btn-secondary btn-sm"><i class="fas fa-user-shield"></i> Login Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-graduation-cap"></i> Tahun Pelajaran 2026/2027 Resmi Dibuka
+        </div>
+        <h2 class="hero-title">SPMB <span class="highlight">SMP NEGERI 1 SEGAH</span></h2>
+        <p class="hero-subtitle">
+          Selamat Datang di Sistem Penerimaan Murid Baru SMP Negeri 1 Segah. Kami siap mewujudkan generasi unggul, berkarakter, berprestasi, dan berwawasan lingkungan.
+        </p>
+        <div class="hero-actions">
+          <a href="pendaftaran.html" class="btn btn-primary btn-lg">
+            <i class="fas fa-file-signature"></i> Daftar Sekarang
+          </a>
+          <a href="cek-status.html" class="btn btn-outline btn-lg">
+            <i class="fas fa-search"></i> Cek Status Pendaftaran
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Info Strip -->
+  <div class="container">
+    <div class="info-strip">
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="icon"><i class="fas fa-laptop-file"></i></div>
+          <h4>1. Pendaftaran</h4>
+          <p>Online mandiri dari rumah atau di sekolah</p>
+        </div>
+        <div class="info-item">
+          <div class="icon"><i class="fas fa-user-check"></i></div>
+          <h4>2. Verifikasi</h4>
+          <p>Validasi berkas oleh tim panitia SPMB</p>
+        </div>
+        <div class="info-item">
+          <div class="icon"><i class="fas fa-sliders-h"></i></div>
+          <h4>3. Seleksi</h4>
+          <p>Sesuai jalur pendaftaran & kuota</p>
+        </div>
+        <div class="info-item">
+          <div class="icon"><i class="fas fa-bullhorn"></i></div>
+          <h4>4. Pengumuman</h4>
+          <p>Diumumkan online secara transparan</p>
+        </div>
+        <div class="info-item">
+          <div class="icon"><i class="fas fa-id-card"></i></div>
+          <h4>5. Daftar Ulang</h4>
+          <p>Registrasi ulang bagi siswa yang lulus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Jalur Pendaftaran (Informasi SPMB) -->
+  <section id="informasi" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Jalur Penerimaan</span>
+        <h2 class="section-title">Pilihan Jalur Masuk SPMB 2026</h2>
+        <p class="section-desc">Pilih jalur pendaftaran yang sesuai dengan kriteria dan berkas pendukung calon murid baru.</p>
+      </div>
+
+      <div class="jalur-grid">
+        <!-- Jalur Domisili -->
+        <div class="jalur-card">
+          <div class="jalur-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3 class="jalur-title">Zonasi / Domisili</h3>
+          <span class="jalur-kuota"><i class="fas fa-users"></i> Kuota: 120 Murid (60%)</span>
+          <p class="jalur-desc">
+            Diperuntukkan bagi calon murid baru yang berdomisili di dalam wilayah zonasi kecamatan Segah dan sekitarnya berdasarkan alamat Kartu Keluarga (KK).
+          </p>
+          <a href="pendaftaran.html?jalur=domisili" class="btn btn-primary btn-sm">Daftar Jalur Ini <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Jalur Afirmasi -->
+        <div class="jalur-card afirmasi">
+          <div class="jalur-icon"><i class="fas fa-hands-helping"></i></div>
+          <h3 class="jalur-title">Afirmasi</h3>
+          <span class="jalur-kuota"><i class="fas fa-users"></i> Kuota: 30 Murid (15%)</span>
+          <p class="jalur-desc">
+            Diperuntukkan bagi calon murid yang berasal dari keluarga ekonomi tidak mampu (pemegang KIP, PKH, KKS) serta calon murid penyandang disabilitas.
+          </p>
+          <a href="pendaftaran.html?jalur=afirmasi" class="btn btn-primary btn-sm">Daftar Jalur Ini <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Jalur Prestasi -->
+        <div class="jalur-card prestasi">
+          <div class="jalur-icon"><i class="fas fa-medal"></i></div>
+          <h3 class="jalur-title">Prestasi</h3>
+          <span class="jalur-kuota"><i class="fas fa-users"></i> Kuota: 40 Murid (20%)</span>
+          <p class="jalur-desc">
+            Diperuntukkan bagi calon murid yang memiliki piagam/sertifikat kejuaraan akademik (OSN/KSN) maupun non-akademik (O2SN, FLS2N, olahraga, seni) berjenjang.
+          </p>
+          <a href="pendaftaran.html?jalur=prestasi" class="btn btn-primary btn-sm">Daftar Jalur Ini <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Jalur Mutasi -->
+        <div class="jalur-card mutasi">
+          <div class="jalur-icon"><i class="fas fa-briefcase"></i></div>
+          <h3 class="jalur-title">Perpindahan Orang Tua</h3>
+          <span class="jalur-kuota"><i class="fas fa-users"></i> Kuota: 10 Murid (5%)</span>
+          <p class="jalur-desc">
+            Diperuntukkan bagi calon murid yang mengikuti perpindahan tugas kedinasan orang tua/wali dibuktikan dengan Surat Keputusan (SK) mutasi resmi.
+          </p>
+          <a href="pendaftaran.html?jalur=mutasi" class="btn btn-primary btn-sm">Daftar Jalur Ini <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Alur Pendaftaran -->
+  <section id="alur" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Panduan Calon Murid</span>
+        <h2 class="section-title">Alur Pendaftaran Online</h2>
+        <p class="section-desc">Tahapan mudah mendaftar sebagai murid baru di SMP Negeri 1 Segah secara terstruktur.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 class="step-title">Isi Formulir</h4>
+          <p class="step-desc">Lengkapi data diri calon murid, orang tua/wali, data sekolah asal, dan jalur yang dipilih.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 class="step-title">Upload Berkas</h4>
+          <p class="step-desc">Unggah scan KK, Akta Kelahiran, Surat Keterangan Lulus (SKL), dan sertifikat jika ada.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 class="step-title">Cetak Bukti</h4>
+          <p class="step-desc">Simpan atau cetak Lembar Bukti Pendaftaran resmi yang dilengkapi QR Code verifikasi.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4 class="step-title">Verifikasi Tim</h4>
+          <p class="step-desc">Panitia sekolah memverifikasi kesesuaian berkas data calon murid di sistem.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <h4 class="step-title">Pengumuman</h4>
+          <p class="step-desc">Cek pengumuman kelulusan secara online dengan memasukkan Nomor Pendaftaran Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Persyaratan & Jadwal -->
+  <section id="persyaratan" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kelengkapan Berkas & Kalender</span>
+        <h2 class="section-title">Persyaratan & Jadwal Pelaksanaan</h2>
+        <p class="section-desc">Pastikan calon murid memenuhi persyaratan umum dan menyiapkan seluruh berkas pendukung.</p>
+      </div>
+
+      <div class="form-row" style="gap: 2rem; align-items: start;">
+        <!-- Persyaratan Card -->
+        <div class="card" style="flex: 1;">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-clipboard-check text-primary"></i> Persyaratan Dokumen</h3>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem;">
+            <li style="display: flex; gap: 0.75rem;">
+              <i class="fas fa-check text-success" style="margin-top: 0.25rem;"></i>
+              <div><strong>Usia Maksimal:</strong> Berusia paling tinggi 15 tahun pada tanggal 1 Juli 2026.</div>
+            </li>
+            <li style="display: flex; gap: 0.75rem;">
+              <i class="fas fa-check text-success" style="margin-top: 0.25rem;"></i>
+              <div><strong>Ijazah / SKL:</strong> Telah menyelesaikan kelas 6 SD/MI atau bentuk lain yang sederajat.</div>
+            </li>
+            <li style="display: flex; gap: 0.75rem;">
+              <i class="fas fa-check text-success" style="margin-top: 0.25rem;"></i>
+              <div><strong>Kartu Keluarga (KK):</strong> Diterbitkan minimal 1 tahun sebelum tanggal pendaftaran SPMB.</div>
+            </li>
+            <li style="display: flex; gap: 0.75rem;">
+              <i class="fas fa-check text-success" style="margin-top: 0.25rem;"></i>
+              <div><strong>Akta Kelahiran:</strong> Scan atau fotokopi Akta Kelahiran asli calon murid.</div>
+            </li>
+            <li style="display: flex; gap: 0.75rem;">
+              <i class="fas fa-check text-success" style="margin-top: 0.25rem;"></i>
+              <div><strong>Surat Keterangan / Piagam (Opsional):</strong> KIP/PKH (Afirmasi), Piagam Juara (Prestasi), SK Tugas (Mutasi).</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Jadwal Table Card -->
+        <div id="jadwal" class="card" style="flex: 1.2;">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-calendar-alt text-primary"></i> Jadwal Penting SPMB 2026</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Kegiatan</th>
+                  <th>Tanggal Pelaksanaan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Sosialisasi SPMB</strong></td>
+                  <td>01 Mei - 20 Mei 2026</td>
+                  <td><span class="badge badge-success">Selesai</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Pendaftaran Online</strong></td>
+                  <td>01 Juni - 20 Juni 2026</td>
+                  <td><span class="badge badge-primary">Dibuka</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Verifikasi Dokumen</strong></td>
+                  <td>05 Juni - 25 Juni 2026</td>
+                  <td><span class="badge badge-warning">Berjalan</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Rapat Pleno Kelulusan</strong></td>
+                  <td>27 Juni 2026</td>
+                  <td><span class="badge badge-info">Mendatang</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Pengumuman Hasil Seleksi</strong></td>
+                  <td>30 Juni 2026</td>
+                  <td><span class="badge badge-info">Mendatang</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Daftar Ulang Murid Baru</strong></td>
+                  <td>01 Juli - 05 Juli 2026</td>
+                  <td><span class="badge badge-info">Mendatang</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section" style="background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%); color: #ffffff; text-align: center;">
+    <div class="container">
+      <h2 style="color: #ffffff; font-size: 2.1rem; margin-bottom: 1rem;">Siap Menjadi Bagian dari SMP Negeri 1 Segah?</h2>
+      <p style="color: #e2e8f0; font-size: 1.1rem; max-width: 650px; margin: 0 auto 2rem;">
+        Pendaftaran dilakukan secara daring dan tidak dipungut biaya apapun (Gratis). Segera daftarkan diri Anda sebelum kuota terpenuhi!
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="pendaftaran.html" class="btn btn-warning btn-lg"><i class="fas fa-pen-fancy"></i> Mulai Pendaftaran Sekarang</a>
+        <a href="cek-status.html" class="btn btn-outline btn-lg"><i class="fas fa-search"></i> Pantau Status Pendaftaran</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="assets/logo.svg" alt="SMPN 1 Segah" style="width: 44px; height: 44px;">
+            <h3 data-school-name style="margin: 0;">SMP NEGERI 1 SEGAH</h3>
+          </div>
+          <p>
+            Sistem Penerimaan Murid Baru (SPMB) resmi berbasis daring untuk mewujudkan layanan pendidikan yang berkeadilan, transparan, dan akuntabel di Kecamatan Segah.
+          </p>
+          <div style="margin-top: 1.25rem; font-size: 0.875rem; color: #94a3b8;">
+            <p><i class="fas fa-map-marker-alt text-warning"></i> <span data-school-address>Jl. Poros Segah, RT 04, Kec. Segah, Kab. Berau, Kalimantan Timur 77353</span></p>
+            <p><i class="fas fa-phone text-warning"></i> <span data-school-phone>0812-5555-6789</span></p>
+            <p><i class="fas fa-envelope text-warning"></i> <span data-school-email>smpn1segah.berau@gmail.com</span></p>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Menu Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="pendaftaran.html">Pendaftaran Online</a></li>
+            <li><a href="cek-status.html">Cek Status Pendaftaran</a></li>
+            <li><a href="pengumuman.html">Pengumuman Kelulusan</a></li>
+            <li><a href="login.html">Portal Admin</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Jalur Masuk</h4>
+          <ul class="footer-links">
+            <li><a href="pendaftaran.html?jalur=domisili">Zonasi / Domisili</a></li>
+            <li><a href="pendaftaran.html?jalur=afirmasi">Afirmasi (KIP/PKH)</a></li>
+            <li><a href="pendaftaran.html?jalur=prestasi">Prestasi Akademik/Non</a></li>
+            <li><a href="pendaftaran.html?jalur=mutasi">Perpindahan Orang Tua</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pusat Bantuan</h4>
+          <ul class="footer-links">
+            <li><a href="#persyaratan">Persyaratan Berkas</a></li>
+            <li><a href="#jadwal">Jadwal SPMB</a></li>
+            <li><a href="#alur">Panduan Alur</a></li>
+            <li><a href="cek-status.html">Bantuan Status Berkas</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <strong data-school-name>SMP Negeri 1 Segah</strong>. Hak Cipta Dilindungi Undang-Undang.
+        </div>
+        <div>
+          Dikembangkan untuk Sistem Penerimaan Murid Baru (SPMB) Berau.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

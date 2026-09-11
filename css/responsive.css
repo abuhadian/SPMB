@@ -1,0 +1,225 @@
+/* ==========================================================================
+   SPMB SMP NEGERI 1 SEGAH - RESPONSIVE STYLESHEET
+   Mobile-friendly, responsive tables, hamburger menu drawer
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar & Mobile Menu */
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--border-color);
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+
+  .nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .nav-btn {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  /* Topbar */
+  .topbar-info span:not(:first-child) {
+    display: none;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* Info Strip */
+  .info-strip {
+    margin-top: 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .info-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+  }
+
+  .info-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  /* Section Title */
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  /* Wizard progress in mobile */
+  .wizard-progress {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .wizard-progress::before, .wizard-progress-bar {
+    display: none;
+  }
+
+  .wizard-step-item {
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .wizard-step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .wizard-step-label {
+    font-size: 0.7rem;
+  }
+
+  /* Bukti Pendaftaran Grid */
+  .bukti-pendaftaran-box {
+    padding: 1.5rem;
+  }
+
+  .bukti-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bukti-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bukti-signatures {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.55rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+  }
+
+  .card {
+    padding: 1.15rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-footer {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  .wizard-footer .btn {
+    width: 100%;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
+}
+
+/* Responsive Table Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}

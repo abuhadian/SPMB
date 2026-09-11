@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Login Administrator SPMB SMP Negeri 1 Segah.">
+  <title>Login Admin - SPMB SMP Negeri 1 Segah</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Navbar Sederhana -->
+  <header style="padding: 1.5rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: #ffffff;">
+        <img src="assets/logo.svg" alt="Logo" style="width: 42px; height: 42px;">
+        <div>
+          <strong style="font-size: 1.05rem; display: block; line-height: 1.2;">SMP NEGERI 1 SEGAH</strong>
+          <span style="font-size: 0.75rem; color: #38bdf8; letter-spacing: 0.05em;">PORTAL ADMINISTRATOR</span>
+        </div>
+      </a>
+      <a href="index.html" class="btn btn-outline btn-sm">
+        <i class="fas fa-home"></i> Beranda Publik
+      </a>
+    </div>
+  </header>
+
+  <!-- Login Card Center -->
+  <main style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1.25rem;">
+    <div class="card" style="max-width: 440px; width: 100%; box-shadow: var(--shadow-xl); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
+      
+      <!-- Icon & Title -->
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #eff6ff; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 1.25rem; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <h2 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 0.35rem;">Login Administrator</h2>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">
+          Masuk ke Dashboard Pengelolaan SPMB SMP Negeri 1 Segah
+        </p>
+      </div>
+
+      <!-- Form Login -->
+      <form id="formAdminLogin" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="adminUsername">Username <span class="required">*</span></label>
+          <div class="input-group">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" id="adminUsername" class="form-control" placeholder="Masukkan username" required autocomplete="username">
+          </div>
+          <span class="form-error" id="errorUsername"></span>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <label class="form-label" for="adminPassword">Password <span class="required">*</span></label>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="adminPassword" class="form-control" placeholder="Masukkan password" required autocomplete="current-password">
+            <button type="button" id="togglePassword" style="position: absolute; right: 0.75rem; background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0.25rem;" aria-label="Lihat Password">
+              <i class="fas fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+          <span class="form-error" id="errorPassword"></span>
+        </div>
+
+        <div style="margin: 1.5rem 0 1rem;">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="btnLogin">
+            <i class="fas fa-sign-in-alt"></i> Masuk ke Dashboard
+          </button>
+        </div>
+
+        <!-- Hint Demo Mode -->
+        <div class="alert alert-info" style="font-size: 0.8rem; padding: 0.75rem; margin: 1.25rem 0 0;">
+          <i class="fas fa-info-circle"></i>
+          <div>
+            <strong>Info Uji Coba Default:</strong><br>
+            Username: <code>admin</code> | Password: <code>admin123</code>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <footer style="padding: 1.5rem 0; text-align: center; color: #64748b; font-size: 0.825rem;">
+    &copy; 2026 SMP Negeri 1 Segah - Sistem Penerimaan Murid Baru
+  </footer>
+
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Cek apakah sudah login
+      const session = sessionStorage.getItem("spmb_smpn1_segah_admin_session");
+      if (session) {
+        try {
+          const user = JSON.parse(session);
+          if (user && user.token) {
+            window.location.href = "admin.html";
+            return;
+          }
+        } catch (e) {}
+      }
+
+      // Toggle Password Visibility
+      const toggleBtn = document.getElementById("togglePassword");
+      const passInput = document.getElementById("adminPassword");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", function() {
+          if (passInput.type === "password") {
+            passInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+          } else {
+            passInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+          }
+        });
+      }
+
+      // Handle Login Submit
+      const form = document.getElementById("formAdminLogin");
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const u = document.getElementById("adminUsername").value.trim();
+        const p = document.getElementById("adminPassword").value.trim();
+        const errU = document.getElementById("errorUsername");
+        const errP = document.getElementById("errorPassword");
+        const btn = document.getElementById("btnLogin");
+
+        errU.textContent = "";
+        errP.textContent = "";
+
+        let valid = true;
+        if (!u) {
+          errU.textContent = "Username wajib diisi.";
+          valid = false;
+        }
+        if (!p) {
+          errP.textContent = "Password wajib diisi.";
+          valid = false;
+        }
+
+        if (!valid) return;
+
+        const origBtnText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner"></span> Memverifikasi...`;
+
+        try {
+          const res = await ApiService.post("adminLogin", { username: u, password: p });
+
+          if (res.success && res.data) {
+            sessionStorage.setItem("spmb_smpn1_segah_admin_session", JSON.stringify(res.data));
+            showToast("Login Berhasil", "Selamat datang di Dashboard Admin!", "success");
+            setTimeout(() => {
+              window.location.href = "admin.html";
+            }, 800);
+          } else {
+            showToast("Login Gagal", res.message || "Username atau password salah.", "danger");
+            btn.disabled = false;
+            btn.innerHTML = origBtnText;
+          }
+        } catch (err) {
+          console.error("Login error:", err);
+          showToast("Gangguan Sistem", "Terjadi kesalahan koneksi saat memverifikasi akun.", "danger");
+          btn.disabled = false;
+          btn.innerHTML = origBtnText;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

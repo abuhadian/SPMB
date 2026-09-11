@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulir Pendaftaran Calon Murid Baru SMP Negeri 1 Segah Tahun Pelajaran 2026/2027.">
+  <title>Pendaftaran Online - SPMB SMP Negeri 1 Segah</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar no-print">
+    <div class="container">
+      <div class="topbar-info">
+        <span><i class="fas fa-school"></i> SPMB SMP Negeri 1 Segah TP 2026/2027</span>
+        <span><i class="fas fa-phone-alt"></i> Bantuan: <span data-school-phone>0812-5555-6789</span></span>
+      </div>
+      <div class="topbar-info">
+        <span><a href="cek-status.html" style="color: #38bdf8;"><i class="fas fa-search"></i> Sudah mendaftar? Cek status di sini</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navbar -->
+  <header class="navbar no-print">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1 data-school-name>SMP NEGERI 1 SEGAH</h1>
+          <span>SPMB ONLINE</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="pendaftaran.html" class="nav-link active"><i class="fas fa-file-signature"></i> Pendaftaran</a></li>
+          <li><a href="cek-status.html" class="nav-link"><i class="fas fa-search"></i> Cek Status</a></li>
+          <li><a href="pengumuman.html" class="nav-link"><i class="fas fa-bullhorn"></i> Pengumuman</a></li>
+          <li class="nav-btn"><a href="login.html" class="btn btn-secondary btn-sm"><i class="fas fa-user-shield"></i> Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="section no-print" style="padding-top: 2.5rem;">
+    <div class="container-narrow">
+
+      <!-- Form Container Card -->
+      <div id="registrationContainer" class="card" style="box-shadow: var(--shadow-md); border-top: 4px solid var(--primary);">
+        
+        <!-- Header Formulir -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="font-size: 1.65rem; margin-bottom: 0.35rem;">Formulir Pendaftaran Murid Baru</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Isi formulir dengan data yang valid dan benar sesuai dokumen resmi (KK / Akta / Ijazah).
+          </p>
+        </div>
+
+        <!-- Multi-Step Progress Indicator -->
+        <div class="wizard-header">
+          <div class="wizard-progress">
+            <div class="wizard-step-item active" data-step-indicator="1">
+              <div class="wizard-step-circle">1</div>
+              <span class="wizard-step-label">Data Murid</span>
+            </div>
+            <div class="wizard-step-item" data-step-indicator="2">
+              <div class="wizard-step-circle">2</div>
+              <span class="wizard-step-label">Asal Sekolah</span>
+            </div>
+            <div class="wizard-step-item" data-step-indicator="3">
+              <div class="wizard-step-circle">3</div>
+              <span class="wizard-step-label">Orang Tua</span>
+            </div>
+            <div class="wizard-step-item" data-step-indicator="4">
+              <div class="wizard-step-circle">4</div>
+              <span class="wizard-step-label">Jalur Masuk</span>
+            </div>
+            <div class="wizard-step-item" data-step-indicator="5">
+              <div class="wizard-step-circle">5</div>
+              <span class="wizard-step-label">Unggah Berkas</span>
+            </div>
+            <div class="wizard-step-item" data-step-indicator="6">
+              <div class="wizard-step-circle">6</div>
+              <span class="wizard-step-label">Review</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Elements -->
+        <form id="formPendaftaran" novalidate>
+
+          <!-- ==============================================
+               STEP 1: DATA CALON MURID
+               ============================================== -->
+          <div class="wizard-step-pane active" data-step-pane="1">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-user-graduate"></i> A. Data Pribadi Calon Murid
+            </h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="namaLengkap">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="namaLengkap" name="namaLengkap" class="form-control" placeholder="Sesuai Akta Kelahiran/Ijazah" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="namaPanggilan">Nama Panggilan</label>
+                <input type="text" id="namaPanggilan" name="namaPanggilan" class="form-control" placeholder="Nama panggilan sehari-hari">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nik">Nomor Induk Kependudukan (NIK) <span class="required">*</span></label>
+                <input type="text" id="nik" name="nik" class="form-control" maxlength="16" placeholder="16 digit angka sesuai KK" required>
+                <span class="form-hint">Contoh: 640301xxxxxxxxxx (16 digit)</span>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="nisn">NISN</label>
+                <input type="text" id="nisn" name="nisn" class="form-control" maxlength="10" placeholder="10 digit angka NISN">
+                <span class="form-hint">Nomor Induk Siswa Nasional dari SD asal</span>
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="jenisKelamin">Jenis Kelamin <span class="required">*</span></label>
+                <select id="jenisKelamin" name="jenisKelamin" class="form-control" required>
+                  <option value="">-- Pilih Jenis Kelamin --</option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="agama">Agama <span class="required">*</span></label>
+                <select id="agama" name="agama" class="form-control" required>
+                  <option value="">-- Pilih Agama --</option>
+                  <option value="Islam">Islam</option>
+                  <option value="Kristen Protestan">Kristen Protestan</option>
+                  <option value="Katolik">Katolik</option>
+                  <option value="Hindu">Hindu</option>
+                  <option value="Buddha">Buddha</option>
+                  <option value="Konghucu">Konghucu</option>
+                </select>
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="tempatLahir">Tempat Lahir <span class="required">*</span></label>
+                <input type="text" id="tempatLahir" name="tempatLahir" class="form-control" placeholder="Kota/Kabupaten kelahiran" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="tanggalLahir">Tanggal Lahir <span class="required">*</span></label>
+                <input type="date" id="tanggalLahir" name="tanggalLahir" class="form-control" required>
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nomorKk">Nomor Kartu Keluarga (KK) <span class="required">*</span></label>
+                <input type="text" id="nomorKk" name="nomorKk" class="form-control" maxlength="16" placeholder="16 digit nomor KK" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="statusAnak">Status Anak</label>
+                <select id="statusAnak" name="statusAnak" class="form-control">
+                  <option value="Anak Kandung">Anak Kandung</option>
+                  <option value="Anak Tiri">Anak Tiri</option>
+                  <option value="Anak Angkat">Anak Angkat</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="anakKe">Anak ke-</label>
+                <input type="number" id="anakKe" name="anakKe" class="form-control" min="1" max="20" placeholder="1">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="jumlahSaudara">Jumlah Saudara</label>
+                <input type="number" id="jumlahSaudara" name="jumlahSaudara" class="form-control" min="0" max="20" placeholder="2">
+              </div>
+            </div>
+
+            <h4 style="margin: 1.5rem 0 1rem; font-size: 1.05rem; color: #334155; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem;">
+              <i class="fas fa-home"></i> Alamat Tempat Tinggal
+            </h4>
+
+            <div class="form-group">
+              <label class="form-label" for="alamat">Alamat Lengkap / Jalan <span class="required">*</span></label>
+              <textarea id="alamat" name="alamat" class="form-control" rows="2" placeholder="Nama jalan, gang, atau nomor rumah" required></textarea>
+              <span class="form-error"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="rt">RT <span class="required">*</span></label>
+                <input type="text" id="rt" name="rt" class="form-control" placeholder="01" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="rw">RW <span class="required">*</span></label>
+                <input type="text" id="rw" name="rw" class="form-control" placeholder="01" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="desa">Desa / Kelurahan <span class="required">*</span></label>
+                <input type="text" id="desa" name="desa" class="form-control" placeholder="Contoh: Tepian Buah / Gunung Sari" required>
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="kecamatan">Kecamatan <span class="required">*</span></label>
+                <input type="text" id="kecamatan" name="kecamatan" class="form-control" value="Segah" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="kabupaten">Kabupaten <span class="required">*</span></label>
+                <input type="text" id="kabupaten" name="kabupaten" class="form-control" value="Berau" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="provinsi">Provinsi <span class="required">*</span></label>
+                <input type="text" id="provinsi" name="provinsi" class="form-control" value="Kalimantan Timur" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="kodePos">Kode Pos</label>
+                <input type="text" id="kodePos" name="kodePos" class="form-control" value="77353">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nomorHp">Nomor HP / WhatsApp Aktif <span class="required">*</span></label>
+                <input type="tel" id="nomorHp" name="nomorHp" class="form-control" placeholder="08xxxxxxxxxx" required>
+                <span class="form-hint">Digunakan untuk informasi verifikasi dan status pendaftaran</span>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Alamat Email (Opsional)</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="contoh@gmail.com">
+                <span class="form-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               STEP 2: DATA ASAL SEKOLAH
+               ============================================== -->
+          <div class="wizard-step-pane" data-step-pane="2">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-school"></i> B. Data Asal Sekolah (SD/MI)
+            </h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="namaSd">Nama SD / MI Asal <span class="required">*</span></label>
+                <input type="text" id="namaSd" name="namaSd" class="form-control" placeholder="Contoh: SD Negeri 001 Segah" required>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="npsnSd">NPSN Sekolah Asal</label>
+                <input type="text" id="npsnSd" name="npsnSd" class="form-control" maxlength="8" placeholder="8 digit NPSN">
+                <span class="form-hint">Nomor Pokok Sekolah Nasional (jika mengetahui)</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="tahunLulus">Tahun Lulus <span class="required">*</span></label>
+                <select id="tahunLulus" name="tahunLulus" class="form-control" required>
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                </select>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="noUjian">Nomor Peserta Ujian / Asesmen</label>
+                <input type="text" id="noUjian" name="noUjian" class="form-control" placeholder="Nomor peserta asesmen jika ada">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="alamatSd">Alamat Sekolah Asal</label>
+              <input type="text" id="alamatSd" name="alamatSd" class="form-control" placeholder="Kecamatan / Kabupaten sekolah asal">
+            </div>
+          </div>
+
+          <!-- ==============================================
+               STEP 3: DATA ORANG TUA / WALI
+               ============================================== -->
+          <div class="wizard-step-pane" data-step-pane="3">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-user-friends"></i> C. Data Orang Tua / Wali
+            </h3>
+
+            <!-- Data Ayah -->
+            <div class="card" style="margin-bottom: 1.5rem; background: #f8fafc;">
+              <h4 style="font-size: 1rem; color: var(--primary); margin-bottom: 1rem;">
+                <i class="fas fa-male"></i> Data Ayah Kandung
+              </h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="namaAyah">Nama Lengkap Ayah <span class="required">*</span></label>
+                  <input type="text" id="namaAyah" name="namaAyah" class="form-control" placeholder="Nama ayah kandung" required>
+                  <span class="form-error"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="nikAyah">NIK Ayah</label>
+                  <input type="text" id="nikAyah" name="nikAyah" class="form-control" maxlength="16" placeholder="16 digit NIK Ayah">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="pendidikanAyah">Pendidikan Terakhir Ayah</label>
+                  <select id="pendidikanAyah" name="pendidikanAyah" class="form-control">
+                    <option value="SD/Sederajat">SD / Sederajat</option>
+                    <option value="SMP/Sederajat">SMP / Sederajat</option>
+                    <option value="SMA/SMK/Sederajat" selected>SMA / SMK / Sederajat</option>
+                    <option value="D3/D4">Diploma (D3/D4)</option>
+                    <option value="S1">Sarjana (S1)</option>
+                    <option value="S2/S3">Pascasarjana (S2/S3)</option>
+                    <option value="Tidak Bersekolah">Tidak Bersekolah</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pekerjaanAyah">Pekerjaan Ayah <span class="required">*</span></label>
+                  <input type="text" id="pekerjaanAyah" name="pekerjaanAyah" class="form-control" placeholder="Petani / PNS / Wiraswasta / Buruh" required>
+                  <span class="form-error"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="penghasilanAyah">Penghasilan Rata-rata Ayah</label>
+                  <select id="penghasilanAyah" name="penghasilanAyah" class="form-control">
+                    <option value="< Rp 1.000.000">&lt; Rp 1.000.000</option>
+                    <option value="Rp 1.000.000 - Rp 2.500.000" selected>Rp 1.000.000 - Rp 2.500.000</option>
+                    <option value="Rp 2.500.000 - Rp 5.000.000">Rp 2.500.000 - Rp 5.000.000</option>
+                    <option value="> Rp 5.000.000">&gt; Rp 5.000.000</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="hpAyah">Nomor HP Ayah</label>
+                  <input type="tel" id="hpAyah" name="hpAyah" class="form-control" placeholder="08xxxxxxxxxx">
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Ibu -->
+            <div class="card" style="margin-bottom: 1.5rem; background: #f8fafc;">
+              <h4 style="font-size: 1rem; color: #db2777; margin-bottom: 1rem;">
+                <i class="fas fa-female"></i> Data Ibu Kandung
+              </h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="namaIbu">Nama Lengkap Ibu <span class="required">*</span></label>
+                  <input type="text" id="namaIbu" name="namaIbu" class="form-control" placeholder="Nama ibu kandung" required>
+                  <span class="form-error"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="nikIbu">NIK Ibu</label>
+                  <input type="text" id="nikIbu" name="nikIbu" class="form-control" maxlength="16" placeholder="16 digit NIK Ibu">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="pendidikanIbu">Pendidikan Terakhir Ibu</label>
+                  <select id="pendidikanIbu" name="pendidikanIbu" class="form-control">
+                    <option value="SD/Sederajat">SD / Sederajat</option>
+                    <option value="SMP/Sederajat">SMP / Sederajat</option>
+                    <option value="SMA/SMK/Sederajat" selected>SMA / SMK / Sederajat</option>
+                    <option value="D3/D4">Diploma (D3/D4)</option>
+                    <option value="S1">Sarjana (S1)</option>
+                    <option value="S2/S3">Pascasarjana (S2/S3)</option>
+                    <option value="Tidak Bersekolah">Tidak Bersekolah</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pekerjaanIbu">Pekerjaan Ibu</label>
+                  <input type="text" id="pekerjaanIbu" name="pekerjaanIbu" class="form-control" placeholder="Ibu Rumah Tangga / PNS / Petani / Pedagang" value="Ibu Rumah Tangga">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="penghasilanIbu">Penghasilan Rata-rata Ibu</label>
+                  <select id="penghasilanIbu" name="penghasilanIbu" class="form-control">
+                    <option value="Tidak Berpenghasilan" selected>Tidak Berpenghasilan</option>
+                    <option value="< Rp 1.000.000">&lt; Rp 1.000.000</option>
+                    <option value="Rp 1.000.000 - Rp 2.500.000">Rp 1.000.000 - Rp 2.500.000</option>
+                    <option value="> Rp 2.500.000">&gt; Rp 2.500.000</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="hpIbu">Nomor HP Ibu</label>
+                  <input type="tel" id="hpIbu" name="hpIbu" class="form-control" placeholder="08xxxxxxxxxx">
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Wali (Opsional) -->
+            <div class="card" style="background: #f8fafc;">
+              <h4 style="font-size: 1rem; color: #475569; margin-bottom: 0.5rem;">
+                <i class="fas fa-user-shield"></i> Data Wali (Opsional, jika tinggal bersama wali)
+              </h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="namaWali">Nama Wali</label>
+                  <input type="text" id="namaWali" name="namaWali" class="form-control" placeholder="Nama wali jika ada">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="hubunganWali">Hubungan dengan Murid</label>
+                  <input type="text" id="hubunganWali" name="hubunganWali" class="form-control" placeholder="Kakek/Nenek/Paman/Bibi">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pekerjaanWali">Pekerjaan Wali</label>
+                  <input type="text" id="pekerjaanWali" name="pekerjaanWali" class="form-control" placeholder="Pekerjaan wali">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="hpWali">Nomor HP Wali</label>
+                  <input type="tel" id="hpWali" name="hpWali" class="form-control" placeholder="08xxxxxxxxxx">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               STEP 4: JALUR MASUK & DATA PRESTASI
+               ============================================== -->
+          <div class="wizard-step-pane" data-step-pane="4">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-compass"></i> D. Jalur Pendaftaran & Prestasi
+            </h3>
+
+            <!-- Pilihan Jalur -->
+            <div class="form-group">
+              <label class="form-label" for="jalurPendaftaran">Pilih Jalur Pendaftaran <span class="required">*</span></label>
+              <select id="jalurPendaftaran" name="jalur" class="form-control" style="font-size: 1.05rem; padding: 0.75rem;" required>
+                <option value="">-- Pilih Jalur Pendaftaran --</option>
+                <option value="Domisili">Zonasi / Domisili (Wilayah Segah & Sekitarnya)</option>
+                <option value="Afirmasi">Afirmasi (KIP / PKH / Disabilitas)</option>
+                <option value="Prestasi">Prestasi (Akademik / Olahraga / Seni)</option>
+                <option value="Mutasi">Perpindahan Tugas Orang Tua / Wali</option>
+              </select>
+              <span class="form-error"></span>
+            </div>
+
+            <div class="alert alert-info" id="jalurInfoBox">
+              <i class="fas fa-info-circle"></i>
+              <div>
+                <strong>Informasi Jalur:</strong> Pastikan Anda memiliki berkas bukti yang sah sesuai dengan jalur yang Anda pilih saat mengunggah dokumen pada tahap selanjutnya.
+              </div>
+            </div>
+
+            <!-- Data Prestasi -->
+            <h4 style="margin: 1.5rem 0 1rem; font-size: 1.05rem; color: #334155; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem;">
+              <i class="fas fa-trophy text-warning"></i> Data Prestasi (Jika Ada)
+            </h4>
+
+            <div class="form-group">
+              <label class="form-label" for="kategoriPrestasi">Kategori Prestasi</label>
+              <select id="kategoriPrestasi" name="kategoriPrestasi" class="form-control">
+                <option value="Tidak ada">Tidak ada</option>
+                <option value="Akademik">Akademik (OSN, Cerdas Cermat, dll)</option>
+                <option value="Non Akademik">Non Akademik (O2SN, Seni, Olahraga, Pramuka, Tahfidz)</option>
+              </select>
+            </div>
+
+            <div id="prestasiDetailContainer" style="display: none; background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1rem;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="namaPrestasi">Nama Kejuaraan / Prestasi</label>
+                  <input type="text" id="namaPrestasi" name="namaPrestasi" class="form-control" placeholder="Contoh: Juara 1 Bulutangkis O2SN">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="tingkatPrestasi">Tingkat Prestasi</label>
+                  <select id="tingkatPrestasi" name="tingkatPrestasi" class="form-control">
+                    <option value="Kecamatan">Tingkat Kecamatan</option>
+                    <option value="Kabupaten">Tingkat Kabupaten (Berau)</option>
+                    <option value="Provinsi">Tingkat Provinsi (Kaltim)</option>
+                    <option value="Nasional">Tingkat Nasional</option>
+                    <option value="Internasional">Tingkat Internasional</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="tahunPrestasi">Tahun Perolehan</label>
+                  <input type="number" id="tahunPrestasi" name="tahunPrestasi" class="form-control" placeholder="2025" min="2020" max="2026">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="penyelenggaraPrestasi">Lembaga Penyelenggara</label>
+                  <input type="text" id="penyelenggaraPrestasi" name="penyelenggaraPrestasi" class="form-control" placeholder="Kemendikbud / Dispora / Kemenag / dll">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               STEP 5: UNGGAH DOKUMEN (GOOGLE DRIVE)
+               ============================================== -->
+          <div class="wizard-step-pane" data-step-pane="5">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-file-arrow-up"></i> E. Unggah Berkas Dokumen
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">
+              Format file yang diizinkan: <strong>PDF, JPG, JPEG, PNG</strong>. Ukuran maksimal <strong>2 MB per file</strong>. Dokumen akan tersimpan dengan aman di Google Drive sekolah.
+            </p>
+
+            <div class="form-row">
+              <!-- Dokumen KK -->
+              <div class="form-group">
+                <label class="form-label">1. Kartu Keluarga (KK) <span class="required">*</span></label>
+                <div class="file-upload-box" id="boxKk">
+                  <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                  <div>Klik atau seret file KK ke sini</div>
+                  <span class="form-hint">Format PDF/JPG/PNG (Maks 2MB)</span>
+                  <input type="file" id="fileKk" accept=".pdf,.jpg,.jpeg,.png" required>
+                  <div class="file-name-preview" id="previewKk"></div>
+                </div>
+                <span class="form-error" id="errorKk"></span>
+              </div>
+
+              <!-- Dokumen Akta Kelahiran -->
+              <div class="form-group">
+                <label class="form-label">2. Akta Kelahiran <span class="required">*</span></label>
+                <div class="file-upload-box" id="boxAkta">
+                  <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                  <div>Klik atau seret file Akta ke sini</div>
+                  <span class="form-hint">Format PDF/JPG/PNG (Maks 2MB)</span>
+                  <input type="file" id="fileAkta" accept=".pdf,.jpg,.jpeg,.png" required>
+                  <div class="file-name-preview" id="previewAkta"></div>
+                </div>
+                <span class="form-error" id="errorAkta"></span>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top: 1rem;">
+              <!-- Dokumen Ijazah / SKL -->
+              <div class="form-group">
+                <label class="form-label">3. Ijazah / Surat Keterangan Lulus (SKL) <span class="required">*</span></label>
+                <div class="file-upload-box" id="boxIjazah">
+                  <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                  <div>Klik atau seret file Ijazah/SKL</div>
+                  <span class="form-hint">Format PDF/JPG/PNG (Maks 2MB)</span>
+                  <input type="file" id="fileIjazah" accept=".pdf,.jpg,.jpeg,.png" required>
+                  <div class="file-name-preview" id="previewIjazah"></div>
+                </div>
+                <span class="form-error" id="errorIjazah"></span>
+              </div>
+
+              <!-- Dokumen Pendukung Lainnya -->
+              <div class="form-group">
+                <label class="form-label">4. Dokumen Pendukung Lain (Opsional)</label>
+                <div class="file-upload-box" id="boxLain">
+                  <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                  <div>KIP/PKH / Piagam Juara / SK Mutasi</div>
+                  <span class="form-hint">Format PDF/JPG/PNG (Maks 2MB)</span>
+                  <input type="file" id="fileLain" accept=".pdf,.jpg,.jpeg,.png">
+                  <div class="file-name-preview" id="previewLain"></div>
+                </div>
+                <span class="form-error" id="errorLain"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               STEP 6: REVIEW DATA & PERNYATAAN
+               ============================================== -->
+          <div class="wizard-step-pane" data-step-pane="6">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-clipboard-check"></i> F. Tinjauan Data & Konfirmasi Pendaftaran
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">
+              Periksa kembali seluruh informasi di bawah ini sebelum mengirim pendaftaran. Pastikan data sudah benar dan tidak ada kekeliruan.
+            </p>
+
+            <!-- Review Box -->
+            <div id="reviewContentBox" style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
+              <!-- Data Review diisi via JS -->
+            </div>
+
+            <!-- Checkbox Pernyataan -->
+            <div class="card" style="background: #fffbeb; border: 1px solid #fde68a; margin-bottom: 1.5rem;">
+              <label style="display: flex; gap: 0.75rem; align-items: flex-start; cursor: pointer;">
+                <input type="checkbox" id="checkPernyataan" style="width: 20px; height: 20px; margin-top: 0.15rem; flex-shrink: 0;" required>
+                <span style="font-size: 0.875rem; line-height: 1.5; color: #78350f;">
+                  <strong>Pernyataan Kebenaran Data:</strong> Saya menyatakan bahwa seluruh data dan dokumen yang saya unggah adalah <strong>BENAR, ASLI, dan DAPAT DIPERTANGGUNGJAWABKAN</strong> secara hukum. Apabila di kemudian hari ditemukan ketidakbenaran atau pemalsuan data, saya bersedia menerima sanksi pembatalan kelulusan sebagai murid SMP Negeri 1 Segah.
+                </span>
+              </label>
+              <span class="form-error" id="errorPernyataan"></span>
+            </div>
+          </div>
+
+          <!-- Wizard Footer Buttons -->
+          <div class="wizard-footer">
+            <button type="button" class="btn btn-secondary" id="btnPrevStep" style="display: none;">
+              <i class="fas fa-arrow-left"></i> Sebelumnya
+            </button>
+            <div style="display: flex; gap: 0.75rem; margin-left: auto;">
+              <button type="button" class="btn btn-primary" id="btnNextStep">
+                Selanjutnya <i class="fas fa-arrow-right"></i>
+              </button>
+              <button type="submit" class="btn btn-success btn-lg" id="btnSubmitForm" style="display: none;">
+                <i class="fas fa-paper-plane"></i> Kirim Pendaftaran
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Result & Bukti Pendaftaran Container (Muncul setelah submit berhasil) -->
+      <div id="successResultContainer" style="display: none;">
+        <div class="alert alert-success" style="padding: 1.5rem; margin-bottom: 2rem;">
+          <div style="font-size: 1.5rem; margin-right: 0.5rem;"><i class="fas fa-check-circle"></i></div>
+          <div>
+            <h3 style="color: #065f46; margin-bottom: 0.25rem;">Pendaftaran Online Berhasil!</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              Selamat! Formulir pendaftaran calon murid baru telah diterima oleh sistem SPMB SMP Negeri 1 Segah. Simpan dan cetak bukti pendaftaran di bawah ini untuk ditunjukkan saat verifikasi berkas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Bukti -->
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-bottom: 1.5rem;" class="no-print">
+          <button type="button" class="btn btn-primary btn-lg" onclick="window.print()">
+            <i class="fas fa-print"></i> Cetak Bukti Pendaftaran (A4)
+          </button>
+          <a href="cek-status.html" class="btn btn-secondary btn-lg">
+            <i class="fas fa-search"></i> Cek Status Berkas
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Area Cetak Bukti Pendaftaran (Untuk Layar dan Cetak Kertas A4) -->
+  <div id="printBuktiArea" class="print-area">
+    <div class="bukti-pendaftaran-box">
+      <!-- Kop Surat Resmi -->
+      <div class="bukti-header">
+        <img src="assets/logo.svg" alt="Logo Sekolah" class="bukti-header-logo">
+        <div class="bukti-header-text">
+          <h3>PEMERINTAH KABUPATEN BERAU</h3>
+          <h3>DINAS PENDIDIKAN</h3>
+          <h2>SMP NEGERI 1 SEGAH</h2>
+          <p>Alamat: Jl. Poros Segah, RT 04, Kec. Segah, Kab. Berau, Kalimantan Timur 77353</p>
+          <p>Website: smpn1segah.sch.id | Email: smpn1segah.berau@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Judul Dokumen -->
+      <div class="bukti-title">
+        TANDA BUKTI PENDAFTARAN MURID BARU (SPMB)
+        <div style="font-size: 0.9rem; font-weight: 600; text-transform: none; margin-top: 0.2rem;">
+          Tahun Pelajaran 2026 / 2027
+        </div>
+      </div>
+
+      <!-- Konten Utama & QR Code -->
+      <div class="bukti-grid">
+        <div>
+          <table class="bukti-table">
+            <tr>
+              <td class="label">Nomor Pendaftaran</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiNoPendaftaran" style="font-size: 1.15rem; color: #1d4ed8;">-</td>
+            </tr>
+            <tr>
+              <td class="label">Tanggal Pendaftaran</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiTglDaftar">-</td>
+            </tr>
+            <tr>
+              <td class="label">Jalur Pendaftaran</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiJalur">-</td>
+            </tr>
+            <tr>
+              <td class="label">Nama Calon Murid</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiNama">-</td>
+            </tr>
+            <tr>
+              <td class="label">NISN</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiNisn">-</td>
+            </tr>
+            <tr>
+              <td class="label">Jenis Kelamin</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiJk">-</td>
+            </tr>
+            <tr>
+              <td class="label">Tempat, Tanggal Lahir</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiTtl">-</td>
+            </tr>
+            <tr>
+              <td class="label">Asal Sekolah</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiAsalSd">-</td>
+            </tr>
+            <tr>
+              <td class="label">Alamat Calon Murid</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiAlamat">-</td>
+            </tr>
+            <tr>
+              <td class="label">Nama Orang Tua / Wali</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiOrtu">-</td>
+            </tr>
+            <tr>
+              <td class="label">Nomor Kontak / WhatsApp</td>
+              <td class="colon">:</td>
+              <td class="value" id="buktiHp">-</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="bukti-qrcode-box">
+          <div id="buktiQrCodeContainer"></div>
+          <span style="font-weight: 700; margin-top: 0.5rem; color: #0f172a;">SCAN UNTUK CEK STATUS</span>
+          <span>Verifikasi Resmi SPMB</span>
+        </div>
+      </div>
+
+      <!-- Catatan Penting -->
+      <div class="bukti-notes">
+        <strong>CATATAN PENTING BAGI CALON MURID:</strong>
+        <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
+          <li>Simpan lembar bukti ini sebagai tanda sah pendaftaran daring di SMP Negeri 1 Segah.</li>
+          <li>Pantau status verifikasi berkas secara berkala melalui menu <strong>Cek Status Pendaftaran</strong> atau scan QR Code di atas.</li>
+          <li>Bawa lembar bukti ini beserta dokumen asli (KK, Akta Kelahiran, dan SKL) saat jadwal verifikasi fisik atau daftar ulang.</li>
+        </ol>
+      </div>
+
+      <!-- Tanda Tangan Panitia & Orang Tua -->
+      <div class="bukti-signatures">
+        <div class="bukti-sig-col">
+          <div>Orang Tua / Wali Calon Murid,</div>
+          <div class="bukti-sig-space"></div>
+          <div class="bukti-sig-name" id="buktiSigOrtu">( .................................................. )</div>
+        </div>
+        <div class="bukti-sig-col">
+          <div>Segah, <span id="buktiSigDate">Juni 2026</span></div>
+          <div>Panitia SPMB SMPN 1 Segah,</div>
+          <div class="bukti-sig-space"></div>
+          <div class="bukti-sig-name">Panitia Penerimaan Murid Baru</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (disembunyikan saat print) -->
+  <footer class="footer no-print">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 <strong data-school-name>SMP Negeri 1 Segah</strong>. Sistem Penerimaan Murid Baru.</div>
+        <div><a href="index.html" style="color: #38bdf8;"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- CDN QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Project Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pendaftaran.js"></script>
+</body>
+</html>

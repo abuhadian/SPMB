@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cek status pendaftaran dan hasil verifikasi berkas calon murid baru SMP Negeri 1 Segah.">
+  <title>Cek Status Pendaftaran - SPMB SMP Negeri 1 Segah</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar no-print">
+    <div class="container">
+      <div class="topbar-info">
+        <span><i class="fas fa-school"></i> SPMB SMP Negeri 1 Segah TP 2026/2027</span>
+        <span><i class="fas fa-phone-alt"></i> Kontak Bantuan: <span data-school-phone>0812-5555-6789</span></span>
+      </div>
+      <div class="topbar-info">
+        <span><i class="fas fa-clock"></i> Verifikasi berkas aktif setiap hari kerja</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navbar -->
+  <header class="navbar no-print">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1 data-school-name>SMP NEGERI 1 SEGAH</h1>
+          <span>SPMB ONLINE</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="pendaftaran.html" class="nav-link"><i class="fas fa-file-signature"></i> Pendaftaran</a></li>
+          <li><a href="cek-status.html" class="nav-link active"><i class="fas fa-search"></i> Cek Status</a></li>
+          <li><a href="pengumuman.html" class="nav-link"><i class="fas fa-bullhorn"></i> Pengumuman</a></li>
+          <li class="nav-btn"><a href="login.html" class="btn btn-secondary btn-sm"><i class="fas fa-user-shield"></i> Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="section no-print" style="padding-top: 3rem;">
+    <div class="container-narrow">
+
+      <!-- Search Card -->
+      <div class="card" style="box-shadow: var(--shadow-md); margin-bottom: 2rem; border-top: 4px solid var(--primary);">
+        <div style="text-align: center; margin-bottom: 1.75rem;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--primary-subtle); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem;">
+            <i class="fas fa-search"></i>
+          </div>
+          <h2 style="font-size: 1.65rem; margin-bottom: 0.35rem;">Cek Status Pendaftaran</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Masukkan Nomor Pendaftaran dan identitas verifikasi Anda (NISN atau Tanggal Lahir) untuk melihat status berkas dan seleksi.
+          </p>
+        </div>
+
+        <form id="formCekStatus" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inputNoPendaftaran">
+                Nomor Pendaftaran <span class="required">*</span>
+              </label>
+              <div class="input-group">
+                <i class="fas fa-id-badge input-icon"></i>
+                <input type="text" id="inputNoPendaftaran" class="form-control" placeholder="Contoh: SPMB-2026-0001" required>
+              </div>
+              <span class="form-hint">Dapat dilihat pada Lembar Bukti Pendaftaran</span>
+              <span class="form-error" id="errorNoPendaftaran"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inputVerifikasi">
+                NISN atau Tanggal Lahir <span class="required">*</span>
+              </label>
+              <div class="input-group">
+                <i class="fas fa-key input-icon"></i>
+                <input type="text" id="inputVerifikasi" class="form-control" placeholder="10 digit NISN atau YYYY-MM-DD" required>
+              </div>
+              <span class="form-hint">Digunakan sebagai kunci pengaman verifikasi data pribadi</span>
+              <span class="form-error" id="errorVerifikasi"></span>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 1rem;">
+            <button type="submit" class="btn btn-primary btn-lg" id="btnCariStatus">
+              <i class="fas fa-search"></i> Periksa Status Pendaftaran
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Loading State -->
+      <div id="loadingStatus" class="card loading-overlay" style="display: none;">
+        <div class="spinner spinner-primary spinner-lg"></div>
+        <p>Sedang memeriksa basis data SPMB...</p>
+      </div>
+
+      <!-- Result Card -->
+      <div id="resultStatusCard" class="card" style="display: none; box-shadow: var(--shadow-md); border-top: 4px solid var(--success);">
+        <div class="card-header">
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Hasil Pencarian Data SPMB</span>
+            <h3 class="card-title" id="resNamaMurid" style="font-size: 1.4rem; color: #0f172a; margin-top: 0.2rem;">-</h3>
+          </div>
+          <div id="resStatusBadge">
+            <span class="badge badge-warning">Menunggu</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <table class="schedule-table" style="box-shadow: none;">
+            <tbody>
+              <tr>
+                <td style="width: 32%; font-weight: 700;">Nomor Pendaftaran</td>
+                <td id="resNoPendaftaran" style="color: var(--primary); font-weight: 800; font-size: 1.05rem;">-</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Jalur Pendaftaran</td>
+                <td id="resJalur">-</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Asal Sekolah (SD/MI)</td>
+                <td id="resAsalSd">-</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Status Verifikasi Berkas</td>
+                <td id="resVerifikasiStatus">-</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Status Seleksi</td>
+                <td id="resSeleksiStatus">-</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Status Kelulusan</td>
+                <td id="resKelulusanStatus">-</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Waktu Update Terakhir</td>
+                <td id="resTanggalUpdate">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Box Catatan Panitia / Perbaikan -->
+        <div id="resCatatanBox" class="alert alert-info">
+          <i class="fas fa-comment-dots" style="font-size: 1.25rem;"></i>
+          <div>
+            <strong>Catatan Panitia SPMB:</strong>
+            <p id="resCatatanText" style="margin: 0.25rem 0 0; font-size: 0.925rem;">Tidak ada catatan khusus.</p>
+          </div>
+        </div>
+
+        <!-- Tombol Cetak Ulang Bukti -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <i class="fas fa-shield-alt text-success"></i> Data ditampilkan dengan aman tanpa menampilkan informasi sensitif.
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="pendaftaran.html" class="btn btn-secondary btn-sm">
+              <i class="fas fa-user-plus"></i> Pendaftaran Baru
+            </a>
+            <button type="button" class="btn btn-primary btn-sm" id="btnCetakUlangBukti">
+              <i class="fas fa-print"></i> Cetak Lembar Bukti
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer no-print">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 <strong data-school-name>SMP Negeri 1 Segah</strong>. Sistem Penerimaan Murid Baru.</div>
+        <div><a href="index.html" style="color: #38bdf8;"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Project Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cek-status.js"></script>
+</body>
+</html>

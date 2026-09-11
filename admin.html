@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Administrator - SPMB SMP Negeri 1 Segah</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <img src="assets/logo.svg" alt="Logo" class="sidebar-brand-logo">
+        <div class="sidebar-brand-text">
+          <h3>SMPN 1 SEGAH</h3>
+          <span>PANITIA SPMB 2026</span>
+        </div>
+      </div>
+
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarAvatar">A</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarUserName">Administrator</div>
+          <div class="user-role" id="sidebarUserRole">Super Admin</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="menu-heading">Menu Utama</li>
+        <li class="menu-item active" data-tab="dashboard">
+          <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+        </li>
+        <li class="menu-item" data-tab="pendaftar">
+          <a href="#pendaftar">
+            <i class="fas fa-user-graduate"></i> <span>Data Pendaftar</span>
+            <span class="menu-badge" id="badgeTotalPendaftar">0</span>
+          </a>
+        </li>
+        <li class="menu-item" data-tab="seleksi">
+          <a href="#seleksi"><i class="fas fa-award"></i> <span>Seleksi & Kelulusan</span></a>
+        </li>
+        <li class="menu-item" data-tab="dokumen">
+          <a href="#dokumen"><i class="fas fa-folder-open"></i> <span>Verifikasi Berkas</span></a>
+        </li>
+        
+        <li class="menu-heading">Publikasi & Pengaturan</li>
+        <li class="menu-item" data-tab="pengumuman">
+          <a href="#pengumuman"><i class="fas fa-bullhorn"></i> <span>Pengumuman</span></a>
+        </li>
+        <li class="menu-item" data-tab="importExport">
+          <a href="#importExport"><i class="fas fa-file-import"></i> <span>Import & Export Data</span></a>
+        </li>
+        <li class="menu-item" data-tab="pengaturan">
+          <a href="#pengaturan"><i class="fas fa-cogs"></i> <span>Pengaturan SPMB</span></a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <a href="index.html" target="_blank" class="btn btn-secondary btn-block btn-sm" style="margin-bottom: 0.5rem;">
+          <i class="fas fa-external-link-alt"></i> Lihat Web Publik
+        </a>
+        <button type="button" class="btn btn-danger btn-block btn-sm" id="btnLogoutAdmin">
+          <i class="fas fa-sign-out-alt"></i> Keluar (Logout)
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      
+      <!-- Top Admin Header -->
+      <header class="admin-header">
+        <div class="admin-header-title">
+          <button type="button" class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2 id="pageTitleText">Dashboard Statistik SPMB</h2>
+        </div>
+        <div class="admin-header-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnRefreshData">
+            <i class="fas fa-sync-alt"></i> Refresh Data
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnQuickExport">
+            <i class="fas fa-file-excel"></i> Export CSV
+          </button>
+        </div>
+      </header>
+
+      <!-- Admin Body Container -->
+      <div class="admin-body">
+
+        <!-- ==============================================
+             TAB 1: DASHBOARD & STATISTIK
+             ============================================== -->
+        <section id="pane-dashboard" class="tab-pane active">
+          
+          <!-- Stat Cards Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon total"><i class="fas fa-users"></i></div>
+              <div class="stat-info">
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">Total Calon Murid</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon menunggu"><i class="fas fa-hourglass-half"></i></div>
+              <div class="stat-info">
+                <div class="stat-value" id="statMenunggu">0</div>
+                <div class="stat-label">Menunggu Verifikasi</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon terverifikasi"><i class="fas fa-check-circle"></i></div>
+              <div class="stat-info">
+                <div class="stat-value" id="statTerverifikasi">0</div>
+                <div class="stat-label">Terverifikasi Valid</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon lulus"><i class="fas fa-user-graduate"></i></div>
+              <div class="stat-info">
+                <div class="stat-value" id="statLulus">0</div>
+                <div class="stat-label">Dinyatakan Lulus</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon tidak-lulus"><i class="fas fa-times-circle"></i></div>
+              <div class="stat-info">
+                <div class="stat-value" id="statTidakLulus">0</div>
+                <div class="stat-label">Tidak Lulus</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon kuota"><i class="fas fa-chair"></i></div>
+              <div class="stat-info">
+                <div class="stat-value" id="statSisaKuota">0</div>
+                <div class="stat-label">Sisa Kuota SPMB</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Grid (Chart.js) -->
+          <div class="charts-grid">
+            <div class="chart-card">
+              <h4 style="font-size: 1.05rem; margin-bottom: 1rem;"><i class="fas fa-chart-pie text-primary"></i> Pendaftar Berdasarkan Jalur</h4>
+              <div class="chart-container">
+                <canvas id="chartJalurCanvas"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <h4 style="font-size: 1.05rem; margin-bottom: 1rem;"><i class="fas fa-chart-bar text-primary"></i> Pendaftar Berdasarkan Jenis Kelamin</h4>
+              <div class="chart-container">
+                <canvas id="chartGenderCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Status Summary -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fas fa-tasks text-primary"></i> Aksi Cepat Panitia SPMB</h3>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary" onclick="switchAdminTab('pendaftar')">
+                <i class="fas fa-list"></i> Buka Data Pendaftar
+              </button>
+              <button type="button" class="btn btn-success" onclick="switchAdminTab('seleksi')">
+                <i class="fas fa-award"></i> Jalankan Rapat Seleksi
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="openModal('modalTambahPengumuman')">
+                <i class="fas fa-plus"></i> Tambah Pengumuman Baru
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="switchAdminTab('importExport')">
+                <i class="fas fa-file-csv"></i> Import Nilai Rapor / Siswa
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             TAB 2: DATA PENDAFTAR LENGKAP
+             ============================================== -->
+        <section id="pane-pendaftar" class="tab-pane">
+          
+          <!-- Toolbar Filter & Search -->
+          <div class="admin-toolbar">
+            <div class="toolbar-row">
+              <div class="input-group" style="max-width: 320px; width: 100%;">
+                <i class="fas fa-search input-icon"></i>
+                <input type="text" id="filterSearch" class="form-control" placeholder="Cari nama, NISN, SD...">
+              </div>
+
+              <div class="filter-group">
+                <select id="filterJalur" class="form-control" style="width: auto;">
+                  <option value="semua">Semua Jalur</option>
+                  <option value="Domisili">Domisili</option>
+                  <option value="Afirmasi">Afirmasi</option>
+                  <option value="Prestasi">Prestasi</option>
+                  <option value="Mutasi">Mutasi</option>
+                </select>
+
+                <select id="filterStatusVerif" class="form-control" style="width: auto;">
+                  <option value="semua">Semua Status Berkas</option>
+                  <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+                  <option value="Terverifikasi">Terverifikasi</option>
+                  <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                </select>
+
+                <select id="filterStatusLulus" class="form-control" style="width: auto;">
+                  <option value="semua">Semua Status Seleksi</option>
+                  <option value="Dalam Proses">Dalam Proses</option>
+                  <option value="Lulus">Lulus</option>
+                  <option value="Tidak Lulus">Tidak Lulus</option>
+                </select>
+
+                <select id="filterGender" class="form-control" style="width: auto;">
+                  <option value="semua">Semua Gender</option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Container -->
+          <div class="card" style="padding: 0; overflow: hidden;">
+            <div class="table-responsive" style="margin-bottom: 0; border: none;">
+              <table class="data-table" id="tablePendaftar">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;">No</th>
+                    <th class="sortable" data-sort="nomorPendaftaran">No. Pendaftaran <i class="fas fa-sort"></i></th>
+                    <th class="sortable" data-sort="namaLengkap">Nama Lengkap <i class="fas fa-sort"></i></th>
+                    <th>NISN</th>
+                    <th>L/P</th>
+                    <th>Asal Sekolah</th>
+                    <th>Jalur</th>
+                    <th>Verifikasi</th>
+                    <th>Kelulusan</th>
+                    <th style="text-align: center; width: 140px;">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyPendaftar">
+                  <!-- Baris data diisi via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty State Table -->
+            <div id="tableEmptyState" class="empty-state" style="display: none;">
+              <i class="fas fa-folder-open empty-state-icon"></i>
+              <h4 class="empty-state-title">Tidak Ada Data Ditemukan</h4>
+              <p class="empty-state-desc">Sesuaikan kata kunci pencarian atau filter Anda.</p>
+            </div>
+
+            <!-- Pagination Toolbar -->
+            <div class="pagination-wrapper" style="padding: 1rem 1.5rem; background: #f8fafc; border-top: 1px solid var(--border-color);">
+              <div style="font-size: 0.85rem; color: var(--text-muted);">
+                Menampilkan <strong id="pageInfoStart">0</strong> - <strong id="pageInfoEnd">0</strong> dari <strong id="pageInfoTotal">0</strong> data calon murid
+              </div>
+              <div class="pagination" id="paginationControls">
+                <!-- Tombol Pagination diisi via JS -->
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==============================================
+             TAB 3: PROSES SELEKSI & PENETAPAN KELULUSAN
+             ============================================== -->
+        <section id="pane-seleksi" class="tab-pane">
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fas fa-balance-scale text-primary"></i> Pengaturan Kuota & Proses Seleksi</h3>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Admin dapat menjalankan seleksi otomatis berdasarkan kuota jalur dan berkas yang telah terverifikasi, atau mengubah kelulusan secara per-murid pada tabel pendaftar.
+            </p>
+
+            <div class="form-row" style="margin: 1.5rem 0;">
+              <div class="card" style="background: #f8fafc;">
+                <h4>Zonasi / Domisili</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Kuota: <strong>120 Siswa</strong></p>
+                <span class="badge badge-primary">Prioritas: Verifikasi Alamat & Jarak</span>
+              </div>
+              <div class="card" style="background: #f8fafc;">
+                <h4>Afirmasi</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Kuota: <strong>30 Siswa</strong></p>
+                <span class="badge badge-success">Prioritas: KIP / PKH / Disabilitas</span>
+              </div>
+              <div class="card" style="background: #f8fafc;">
+                <h4>Prestasi</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Kuota: <strong>40 Siswa</strong></p>
+                <span class="badge badge-warning">Prioritas: Nilai Rapor & Piagam Kejuaraan</span>
+              </div>
+              <div class="card" style="background: #f8fafc;">
+                <h4>Mutasi Orang Tua</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Kuota: <strong>10 Siswa</strong></p>
+                <span class="badge badge-info">Prioritas: SK Penugasan Orang Tua</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: center; background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-md); padding: 1.25rem;">
+              <i class="fas fa-exclamation-triangle text-warning" style="font-size: 1.75rem;"></i>
+              <div style="flex-grow: 1;">
+                <strong style="color: #92400e;">Eksekusi Seleksi Otomatis</strong>
+                <p style="color: #78350f; font-size: 0.875rem; margin: 0.25rem 0 0;">
+                  Menetapkan calon murid yang berkasnya "Terverifikasi" menjadi "Lulus" sesuai batas kuota masing-masing jalur. Calon murid lainnya akan berstatus "Tidak Lulus".
+                </p>
+              </div>
+              <button type="button" class="btn btn-warning" id="btnJalankanSeleksi">
+                <i class="fas fa-play"></i> Jalankan Seleksi Otomatis
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             TAB 4: VERIFIKASI BERKAS & DOKUMEN
+             ============================================== -->
+        <section id="pane-dokumen" class="tab-pane">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fas fa-folder-open text-primary"></i> Daftar Berkas Perlu Diverifikasi</h3>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
+              Di bawah ini adalah calon murid baru yang status dokumennya masih <strong>Menunggu Verifikasi</strong> atau <strong>Perlu Perbaikan</strong>.
+            </p>
+
+            <div class="table-responsive">
+              <table class="data-table" id="tableDokumenVerif">
+                <thead>
+                  <tr>
+                    <th>No. Pendaftaran</th>
+                    <th>Nama Calon Murid</th>
+                    <th>Jalur</th>
+                    <th>Status Berkas</th>
+                    <th>Dokumen Terunggah</th>
+                    <th>Catatan Terakhir</th>
+                    <th>Aksi Verifikasi</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyDokumenVerif">
+                  <!-- Diisi via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             TAB 5: PENGUMUMAN (CRUD)
+             ============================================== -->
+        <section id="pane-pengumuman" class="tab-pane">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fas fa-bullhorn text-primary"></i> Kelola Pengumuman SPMB</h3>
+              <button type="button" class="btn btn-primary btn-sm" onclick="openModal('modalTambahPengumuman')">
+                <i class="fas fa-plus"></i> Tambah Pengumuman
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width: 100px;">Tanggal</th>
+                    <th>Judul Pengumuman</th>
+                    <th>Isi Singkat</th>
+                    <th>Status</th>
+                    <th style="width: 120px; text-align: center;">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyPengumumanAdmin">
+                  <!-- Diisi via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             TAB 6: IMPORT & EXPORT DATA
+             ============================================== -->
+        <section id="pane-importExport" class="tab-pane">
+          <div class="form-row" style="gap: 1.5rem; align-items: start;">
+            
+            <!-- Box Import CSV Siswa -->
+            <div class="card" style="flex: 1;">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-file-import text-primary"></i> Import Data Calon Murid</h3>
+              </div>
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Unggah file CSV calon murid baru secara massal. Sistem akan otomatis memvalidasi kolom dan mencegah NIK duplikat.
+              </p>
+              
+              <div style="margin-bottom: 1.25rem;">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnDownloadTemplateMurid">
+                  <i class="fas fa-download"></i> Unduh Template CSV Siswa
+                </button>
+              </div>
+
+              <div class="file-upload-box" style="padding: 1.25rem;">
+                <i class="fas fa-file-csv file-upload-icon"></i>
+                <div style="font-size: 0.9rem;">Pilih file CSV Murid Baru</div>
+                <input type="file" id="inputCsvMurid" accept=".csv">
+                <div class="file-name-preview" id="previewCsvMurid"></div>
+              </div>
+
+              <div style="margin-top: 1rem;">
+                <button type="button" class="btn btn-primary btn-block" id="btnProsesImportMurid" disabled>
+                  <i class="fas fa-upload"></i> Proses Import Murid
+                </button>
+              </div>
+            </div>
+
+            <!-- Box Import Nilai Rapor -->
+            <div class="card" style="flex: 1;">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-file-invoice text-success"></i> Import Nilai Rapor SD</h3>
+              </div>
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Unggah file CSV nilai rapor calon murid. Format nilai 0-100 dan nomor pendaftaran harus sudah terdaftar di sistem.
+              </p>
+
+              <div style="margin-bottom: 1.25rem;">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnDownloadTemplateRaport">
+                  <i class="fas fa-download"></i> Unduh Template CSV Nilai Rapor
+                </button>
+              </div>
+
+              <div class="file-upload-box" style="padding: 1.25rem;">
+                <i class="fas fa-file-csv file-upload-icon" style="color: var(--success);"></i>
+                <div style="font-size: 0.9rem;">Pilih file CSV Nilai Rapor</div>
+                <input type="file" id="inputCsvRaport" accept=".csv">
+                <div class="file-name-preview" id="previewCsvRaport"></div>
+              </div>
+
+              <div style="margin-top: 1rem;">
+                <button type="button" class="btn btn-success btn-block" id="btnProsesImportRaport" disabled>
+                  <i class="fas fa-upload"></i> Proses Import Nilai Rapor
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Export Section -->
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fas fa-file-export text-primary"></i> Export Laporan Data SPMB</h3>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Unduh seluruh rekapan data pendaftar ke dalam format CSV yang kompatibel dengan Microsoft Excel atau cetak lembar laporan resmi.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary" id="btnExportAllCsv">
+                <i class="fas fa-file-csv"></i> Unduh CSV Seluruh Pendaftar
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="window.print()">
+                <i class="fas fa-print"></i> Cetak Rekap Laporan
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             TAB 7: PENGATURAN SPMB
+             ============================================== -->
+        <section id="pane-pengaturan" class="tab-pane">
+          <div class="card" style="max-width: 750px;">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fas fa-cogs text-primary"></i> Konfigurasi Pelaksanaan SPMB</h3>
+            </div>
+            
+            <form id="formPengaturanSpmb">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="settingNamaSekolah">Nama Satuan Pendidikan</label>
+                  <input type="text" id="settingNamaSekolah" class="form-control" value="SMP Negeri 1 Segah">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="settingTahunPelajaran">Tahun Pelajaran <span class="required">*</span></label>
+                  <input type="text" id="settingTahunPelajaran" class="form-control" placeholder="Contoh: 2026/2027" value="2026/2027" required>
+                  <span class="form-hint">Dapat diisi manual (contoh: 2026/2027, 2027/2028).</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="settingTahunSpmb">Tahun SPMB</label>
+                  <input type="text" id="settingTahunSpmb" class="form-control" placeholder="Contoh: 2026" value="2026">
+                  <span class="form-hint">Tahun pembukaan pendaftaran (digunakan pada nomor pendaftaran)</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="settingTotalKuota">Total Daya Tampung / Kuota</label>
+                  <input type="number" id="settingTotalKuota" class="form-control" value="200" min="1">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="settingStatusSpmb">Status Pendaftaran Online</label>
+                  <select id="settingStatusSpmb" class="form-control">
+                    <option value="buka" selected>Buka (Pendaftaran Aktif)</option>
+                    <option value="tutup">Tutup (Pendaftaran Selesai)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="settingAlamatSekolah">Alamat Sekolah</label>
+                  <input type="text" id="settingAlamatSekolah" class="form-control" value="Jl. Poros Segah, RT 04, Kec. Segah, Kab. Berau, Kalimantan Timur">
+                </div>
+              </div>
+
+              <div style="margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary" id="btnSimpanPengaturan">
+                  <i class="fas fa-save"></i> Simpan Pengaturan
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==============================================
+       MODAL: DETAIL PENDAFTAR
+       ============================================== -->
+  <div class="modal-backdrop" id="modalDetailApplicant">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-id-card text-primary"></i> Detail Calon Murid</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body" id="modalDetailBody">
+        <!-- Diisi dinamis via JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-modal-close>Tutup</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnModalPrintBukti">
+          <i class="fas fa-print"></i> Cetak Lembar Bukti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL: VERIFIKASI & CATATAN ADMIN
+       ============================================== -->
+  <div class="modal-backdrop" id="modalVerifikasiApplicant">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-check-double text-primary"></i> Verifikasi Berkas Murid</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="verifNomorPendaftaran">
+        
+        <div style="margin-bottom: 1rem;">
+          <strong id="verifNamaMurid" style="font-size: 1.15rem; color: #0f172a;">-</strong>
+          <div style="color: var(--text-muted); font-size: 0.85rem;" id="verifSubText">-</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Status Verifikasi Berkas</label>
+          <select id="selectStatusVerifikasi" class="form-control">
+            <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+            <option value="Terverifikasi">Terverifikasi (Valid & Lengkap)</option>
+            <option value="Perlu Perbaikan">Perlu Perbaikan (Berkas Tidak Jelas/Kurang)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Status Kelulusan</label>
+          <select id="selectStatusKelulusan" class="form-control">
+            <option value="Dalam Proses">Dalam Proses Seleksi</option>
+            <option value="Lulus">Lulus (Diterima)</option>
+            <option value="Tidak Lulus">Tidak Lulus</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Catatan Panitia untuk Siswa</label>
+          <textarea id="textCatatanVerifikasi" class="form-control" rows="3" placeholder="Contoh: Scan KK kurang jelas, silakan serahkan berkas asli ke panitia sekolah."></textarea>
+          <span class="form-hint">Catatan ini dapat dibaca oleh calon murid saat melakukan Cek Status.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-modal-close>Batal</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnSimpanVerifikasi">
+          <i class="fas fa-save"></i> Simpan Status
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL: TAMBAH / EDIT PENGUMUMAN
+       ============================================== -->
+  <div class="modal-backdrop" id="modalTambahPengumuman">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-bullhorn text-primary"></i> Pengumuman Baru</h3>
+        <button type="button" class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="inputPengumumanId">
+        
+        <div class="form-group">
+          <label class="form-label" for="inputPengumumanJudul">Judul Pengumuman <span class="required">*</span></label>
+          <input type="text" id="inputPengumumanJudul" class="form-control" placeholder="Contoh: Jadwal Daftar Ulang SPMB 2026" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputPengumumanIsi">Isi Pengumuman <span class="required">*</span></label>
+          <textarea id="inputPengumumanIsi" class="form-control" rows="4" placeholder="Tuliskan detail pengumuman resmi di sini..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputPengumumanLink">Tautan / Link Lampiran (Opsional)</label>
+          <input type="url" id="inputPengumumanLink" class="form-control" placeholder="https://drive.google.com/...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-modal-close>Batal</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnSimpanPengumuman">
+          <i class="fas fa-save"></i> Publikasikan
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+  <!-- Project Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

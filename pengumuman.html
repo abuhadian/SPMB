@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pusat pengumuman resmi dan hasil kelulusan SPMB SMP Negeri 1 Segah.">
+  <title>Pengumuman & Kelulusan - SPMB SMP Negeri 1 Segah</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span><i class="fas fa-school"></i> SPMB SMP Negeri 1 Segah TP 2026/2027</span>
+        <span><i class="fas fa-bullhorn"></i> Pengumuman Hasil Seleksi: 30 Juni 2026</span>
+      </div>
+      <div class="topbar-info">
+        <span><a href="cek-status.html" style="color: #38bdf8;"><i class="fas fa-search"></i> Cek Status Berkas</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1 data-school-name>SMP NEGERI 1 SEGAH</h1>
+          <span>SPMB ONLINE</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="pendaftaran.html" class="nav-link"><i class="fas fa-file-signature"></i> Pendaftaran</a></li>
+          <li><a href="cek-status.html" class="nav-link"><i class="fas fa-search"></i> Cek Status</a></li>
+          <li><a href="pengumuman.html" class="nav-link active"><i class="fas fa-bullhorn"></i> Pengumuman</a></li>
+          <li class="nav-btn"><a href="login.html" class="btn btn-secondary btn-sm"><i class="fas fa-user-shield"></i> Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Pengumuman -->
+  <section class="hero" style="padding: 3.5rem 0 3rem;">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-bullhorn"></i> Informasi Resmi & Hasil Seleksi
+        </div>
+        <h2 class="hero-title">Pengumuman <span class="highlight">SPMB 2026</span></h2>
+        <p class="hero-subtitle">
+          Temukan surat edaran resmi, jadwal kegiatan terkini, dan cek pengumuman hasil seleksi kelulusan calon murid baru secara mandiri.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="section" style="padding-top: 3rem;">
+    <div class="container">
+      <div class="form-row" style="gap: 2.5rem; align-items: start;">
+
+        <!-- Kolom Kiri: Cek Hasil Kelulusan Individual -->
+        <div style="flex: 1;">
+          <div class="card" style="box-shadow: var(--shadow-md); border-top: 4px solid var(--primary); position: sticky; top: 90px;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div style="width: 52px; height: 52px; border-radius: 50%; background: #eff6ff; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin: 0 auto 0.75rem;">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Cek Kelulusan Murid</h3>
+              <p style="color: var(--text-muted); font-size: 0.875rem;">
+                Masukkan Nomor Pendaftaran untuk melihat pengumuman kelulusan Anda.
+              </p>
+            </div>
+
+            <form id="formCekKelulusan" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="lulusNoPendaftaran">Nomor Pendaftaran <span class="required">*</span></label>
+                <div class="input-group">
+                  <i class="fas fa-id-badge input-icon"></i>
+                  <input type="text" id="lulusNoPendaftaran" class="form-control" placeholder="Contoh: SPMB-2026-0001" required>
+                </div>
+                <span class="form-error" id="errorLulusNo"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnCekKelulusan">
+                <i class="fas fa-search"></i> Lihat Hasil Kelulusan
+              </button>
+            </form>
+
+            <!-- Loading Cek Kelulusan -->
+            <div id="loadingKelulusan" class="loading-overlay" style="display: none; padding: 1.5rem 0;">
+              <div class="spinner spinner-primary"></div>
+              <span style="font-size: 0.85rem;">Memeriksa status kelulusan...</span>
+            </div>
+
+            <!-- Hasil Kelulusan Box -->
+            <div id="boxHasilKelulusan" style="display: none; margin-top: 1.5rem; animation: fadeIn 0.3s ease;">
+              <!-- Konten hasil dimasukkan via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Daftar Pengumuman Sekolah -->
+        <div style="flex: 1.5;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div>
+              <h3 style="font-size: 1.45rem; margin-bottom: 0.2rem;">Berita & Informasi SPMB</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Pengumuman resmi dari panitia SPMB SMP Negeri 1 Segah</p>
+            </div>
+          </div>
+
+          <!-- Loading Announcements -->
+          <div id="loadingAnnouncements" class="card loading-overlay">
+            <div class="spinner spinner-primary spinner-lg"></div>
+            <p>Memuat pengumuman terbaru...</p>
+          </div>
+
+          <!-- Announcements List Container -->
+          <div id="announcementsList" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <!-- Render via JS -->
+          </div>
+
+          <!-- Empty State (jika belum ada) -->
+          <div id="emptyAnnouncements" class="card empty-state" style="display: none;">
+            <i class="fas fa-newspaper empty-state-icon"></i>
+            <h4 class="empty-state-title">Belum Ada Pengumuman Baru</h4>
+            <p class="empty-state-desc">Pengumuman resmi panitia SPMB akan ditampilkan di halaman ini.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 <strong data-school-name>SMP Negeri 1 Segah</strong>. Sistem Penerimaan Murid Baru.</div>
+        <div><a href="index.html" style="color: #38bdf8;"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pengumuman.js"></script>
+</body>
+</html>
